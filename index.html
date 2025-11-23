@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker (Broken Version)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Expense Tracker</h1>
+
+    <!-- Input Section -->
+    <div class="input-box">
+      <input type="text" id="title" placeholder="Expense Title">
+      <input type="number" id="amount">
+      <!-- missing placeholder on purpose -->
+      <button id="add-btn">Add</button>
+    </div>
+
+    <!-- Expense List -->
+    <ul id="expense-list"></ul>
+
+    <!-- Total Amount (broken update logic) -->
+    <div class="total">
+      Total: <span id="total-amount">0</span>
+    </div>
+
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

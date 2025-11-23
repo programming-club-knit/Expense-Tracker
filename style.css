@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #eef0f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 420px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* BROKEN FLEX: causes layout issue */
+.input-box {
+  display: flex;
+  gap: 5px;
+  /* missing align-items */
+}
+
+.input-box input {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  /* missing flex rule -> layout breaks */
+}
+
+#add-btn {
+  padding: 10px;
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  /* button grows incorrectly */
+  flex: 1;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 8px 0;
+  background: #f8fafc;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+/* broken styling on purpose */
+.delete-btn {
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.total {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10px;
+}
