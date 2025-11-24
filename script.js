@@ -46,6 +46,7 @@ function renderExpenses() {
     /* Amount missing ₹ sometimes */
     li.innerHTML = `
       <span>${exp.title} - ${exp.amount}</span>
+      <span class="edit-btn" onclick="editExpense(${index})">Edit</span>
       <span class="delete-btn" onclick="deleteExpense(${index})">X</span>
     `;
 
@@ -88,6 +89,19 @@ function deleteExpense(index) {
   saveData();
   renderExpenses();
   /* missing updateTotal() */
+}
+
+/* Edit expense function */
+function editExpense(index) {
+  let expense = expenses[index];
+  titleInput.value = expense.title;
+  amountInput.value = expense.amount;
+  
+  // Remove the expense being edited
+  updateTotalDelete(Number(expense.amount));
+  expenses.splice(index, 1);
+  saveData();
+  renderExpenses();
 }
 
 /* Render BEFORE data is loaded properly */

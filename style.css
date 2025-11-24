@@ -68,6 +68,13 @@ h1 {
   font-weight: bold;
 }
 
+.edit-btn {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
 .total {
   font-size: 18px;
   text-align: center;
