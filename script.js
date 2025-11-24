@@ -13,9 +13,20 @@ try {
 }
 
 /* WRONG total calculation (intentional bug) */
-function updateTotal() {
   let total = 0;
+
+function updateTotalAdd(expenses) {
+if (expenses!=0){
   // missing logic to sum amounts
+  total=total+Number(expenses);
+  totalAmountEl.innerText = total;
+}
+}
+
+function updateTotalDelete(expenses) {
+
+  // missing logic to sum amounts
+total=total-Number(expenses);
   totalAmountEl.innerText = total;
 }
 
@@ -61,6 +72,8 @@ addBtn.addEventListener("click", () => {
 
   expenses.push(expense);
 
+  updateTotalAdd(amount);
+
   saveData();
   renderExpenses();
 
@@ -70,6 +83,7 @@ addBtn.addEventListener("click", () => {
 
 /* BROKEN DELETE FEATURE */
 function deleteExpense(index) {
+  updateTotalDelete(Number(expenses[index].amount))
   expenses.splice(index, 1);
   saveData();
   renderExpenses();
@@ -78,4 +92,3 @@ function deleteExpense(index) {
 
 /* Render BEFORE data is loaded properly */
 renderExpenses();
-updateTotal();
