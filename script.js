@@ -36,6 +36,7 @@ function renderExpenses() {
     li.innerHTML = `
       <span>${exp.title} - ${exp.amount}</span>
       <span class="delete-btn" onclick="deleteExpense(${index})">X</span>
+      <span class="edit-btn" onclick="editExpense(${index})">Edit</span>
     `;
 
     expenseList.appendChild(li);
@@ -74,6 +75,12 @@ function deleteExpense(index) {
   saveData();
   renderExpenses();
   /* missing updateTotal() */
+}
+function editExpense(index){
+  if (!expenses || !expenses[index]) return;
+  titleInput.value = expenses[index].title;
+  amountInput.value = expenses[index].amount;
+  console.log("Edit requested for index:", index);
 }
 
 /* Render BEFORE data is loaded properly */
