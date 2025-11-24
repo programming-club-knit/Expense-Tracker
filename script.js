@@ -11,6 +11,8 @@ try {
 } catch {
   expenses = []; // sometimes loads null
 }
+var isEditMode = false
+var currentEditIndex =-1
 
 /* WRONG total calculation (intentional bug) */
 function updateTotal() {
@@ -24,6 +26,15 @@ function saveData() {
   localStorage.setItem("expenses",  JSON.stringify(expenses));
 }
 
+function editExpense(index) {
+  isEditMode=true
+  let data = expenses[index]
+  titleInput.value = data.title
+  amountInput.value = data.amount
+  currentEditIndex = index
+  addBtn.innerText="Save Changes"
+}
+
 /* BROKEN RENDER FUNCTION */
 function renderExpenses() {
   expenseList.innerHTML = "";
@@ -35,7 +46,10 @@ function renderExpenses() {
     /* Amount missing ₹ sometimes */
     li.innerHTML = `
       <span>${exp.title} - ${exp.amount}</span>
+      <div>
+      <span class="edit-btn" onclick="editExpense(${index})">✎</span>
       <span class="delete-btn" onclick="deleteExpense(${index})">X</span>
+      </div>
     `;
 
     expenseList.appendChild(li);
@@ -45,6 +59,7 @@ function renderExpenses() {
 }
 
 addBtn.addEventListener("click", () => {
+  
   let title = titleInput.value;
   let amount = Number(amountInput.value);
 
@@ -58,8 +73,13 @@ addBtn.addEventListener("click", () => {
   if (!expenses) {
     expenses = [];
   }
+  if(isEditMode){
+    expenses[currentEditIndex]=expense
+    isEditMode=false
+  }else{
 
   expenses.push(expense);
+  }
 
   saveData();
   renderExpenses();
@@ -73,6 +93,9 @@ function deleteExpense(index) {
   expenses.splice(index, 1);
   saveData();
   renderExpenses();
+  isEditMode=false
+  currentEditIndex=-1
+  addBtn.innerText="Add"
   /* missing updateTotal() */
 }
 

@@ -67,6 +67,11 @@ h1 {
   cursor: pointer;
   font-weight: bold;
 }
+.edit-btn {
+  color: #222222;
+  cursor: pointer;
+  font-weight: bold;
+}
 
 .total {
   font-size: 18px;
